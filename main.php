@@ -1,70 +1,65 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Data Visuallization</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-    <script>
-    function refreshpage() {
-        location.reload();
-    }
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Untitled Document</title>
+<script type="text/javascript" src="jquery-3.5.1.min.js"></script>
+<script>
+function refreshpage(){
+	location.reload();
+	}
 
-    function displayResult() {
-        var dimention=document.getElementById("dimention").value;
-        if (document.getElementById('qty').checked) {
+function displayResult(){ 
+var dimensi=document.getElementById("dimensi").value;
+ if (document.getElementById('qty').checked) {
+ 
+$.ajax({
+	            type: 'GET',
+	            url: "dashboard.php",
+				data: {dimensi:dimensi},
+	            success: function(hasil) {
+	                $('#grafik').html(hasil);
+	           }
+			   });//ajax untuk menampilkan grafik
+			                 }//pilihan jika ingin melihat qty penjualan
+			   
+else if (document.getElementById('amount').checked) {
+$.ajax({
+	            type: 'GET',
+	            url: "dashboard_1.php",
+				data: {dimensi:dimensi},
+	            success: function(hasil) {
+	                $('#grafik').html(hasil);
+	           }
+			   });//ajax untuk menampilkan grafik			   
+               }//pilihan jika ingin melihat Amount penjualan
 
-            $.ajax({
-                    type: 'GET',
-                    url: "dashboard.php",
-                    data: "dimention:dimention",
-                    success: function(hasil) {
-                        $('#grafik').html(hasil);
-                    }
-            }); //showing graphic
-        
-        } //option if you want to see the amount of sales
-        else if (document.getElementById('amount').checked) {
-            $.ajax ({
-                type: 'GET',
-                    url: "dashboard_1.php",
-                    data: "dimention:dimention",
-                    success: function(hasil) {
-                        $('#grafik').html(hasil);
-                    }
-
-            });
-        }
-    }
-
-     </script>
+}
+</script>
 </head>
+
 <body>
+<h1 align="center">Aplikasi Dashboard PT Datamining</h1>
 
-<h1 align="center"> Aplikasi Dashboard PT Datamining </h1>
+<div style="text-align:center">
+<p>Dimensi yang Ingin anda Analisa</p>
 
-<div style="text-align-center tae">
-    <p>Dimensi yang ingin anda analisa</p>
+<select id="dimensi" onchange="refreshpage();">
+    <option value="id_produk">produk</option>
+    <option value="id_cabang">cabang</option>   
+    <option value="id_periode">periode</option>     
+</select><br />
 
-    <select id="dimention" onchange="refreshpage();">
-        <option value="id_produk">Produk</option>
-        <option value="id_cabang">Cabang</option>
-        <option value="id_periode">Periode</option>
-    </select> <br>
+<p>Measuremnet Apa yang ingin anda ukur</p>
+<input type="radio" id="qty" name="pilihan" />
+<label for="qty">Qty Penjualan</label>
+<input type="radio" id="amount" name="pilihan"  />
+<label for="amount">Amount Penjualan</label><br />
 
-    <p>Measurement apa yang ingin anda ukur?</p>
-        <input type="radio" id="qty" name="pilihan">
-        <label for="qty">Qty Penjualan</label>
-        <input type="radio" id="amount" name="pilihan">
-        <label for="amount">Amount Penjualan</label> <br>
-
-    <button id="visual" onclick="displayResult();">Visualization</button>
+<button id="visual" onclick="displayResult();">Visualisasi</button>
 </div>
 <div id="grafik">
 
 </div>
-    
 </body>
 </html>
