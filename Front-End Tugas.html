@@ -5,7 +5,40 @@
 <title>Untitled Document</title>
 <script type="text/javascript" src="jquery-3.5.1.min.js"></script>
 
+<!-- script -->
+<script>
+    
+    function refreshpage() {
+        location.reload();
+    }
 
+    function displayResult() {
+        var dimensi = document.getElementById("dimensi").value;
+            if (document.getElementById("sum").checked) {
+
+                $.ajax({
+                                type: 'GET',
+                                url: "dashboard_tgs1.php",
+                                data: {dimensi:dimensi},
+                                success: function(hasil) {
+                                    $('#grafik').html(hasil);
+                                }
+                });
+            }
+            else if (document.getElementById('avr').checked) {
+                $.ajax({
+                                type: 'GET',
+                                url: "dashboard_tgs2.php",
+                                data: {dimensi:dimensi},
+                                success: function(hasil) {
+                                    $('#grafik').html(hasil);
+                                }
+                });
+            }
+        
+    }
+    
+</script>
 </head>
 
 <body>
@@ -28,8 +61,8 @@
 
 <p>Besaran yang ingin anda gunakan?</p>
 <select id="dimensi" onchange="refreshpage();">
-    <option value="id_produk">Sum(Jumlah)</option>
-    <option value="id_cabang">Rata-rata</option>   
+    <option value="id_produk" id="sum">Sum(Jumlah)</option>
+    <option value="id_cabang" id="avr">Rata-rata</option>   
       
 </select><br />
 
