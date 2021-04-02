@@ -13,13 +13,13 @@
 <?php 
 include("koneksi.php");
 $dimensi=$_GET['dimensi'];
-$produk = mysqli_query($koneksi,"select * from fakta group by ".$dimensi."");
+$produk = mysqli_query($koneksi,"SELECT * FROM fakta GROUP BY ".$dimensi."");
 while($row = mysqli_fetch_array($produk)){
 $a[] = $row[''.$dimensi.''];
 	
-$query = mysqli_query($koneksi,"select sum(qtypenjualan) from fakta where ".$dimensi."='".$row[''.$dimensi.'']."' group by ".$dimensi."");
+$query = mysqli_query($koneksi,"SELECT SUM(qtypenjualan) FROM fakta WHERE ".$dimensi."='".$row[''.$dimensi.'']."' group by ".$dimensi."");
 	$row = $query->fetch_array();
-	$b[] = $row['sum(qtypenjualan)'];
+	$b[] = $row['SUM(qtypenjualan)'];
 }
 ?>
 

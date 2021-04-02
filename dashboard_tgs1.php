@@ -12,12 +12,12 @@
  
     include("koneksi.php");
     $dimensi = $_GET['dimensi'];
-    $produk = mysqli_query($koneksi,"select * from fakta group by ".$dimensi."");
+    $produk = mysqli_query($koneksi,"SELECT * FROM fakta GROUP BY ".$dimensi."");
 
     while($row = mysqli_fetch_array($produk)){
     $a[] = $row[''.$dimensi.''];
         
-    $query = mysqli_query($koneksi,"select sum(qtypenjualan) from fakta where ".$dimensi."='".$row[''.$dimensi.'']."' group by ".$dimensi."");
+    $query = mysqli_query($koneksi,"SELECT SUM(qtypenjualan) FROM fakta WHERE ".$dimensi."='".$row[''.$dimensi.'']."' group by ".$dimensi."");
         $row = $query->fetch_array();
         $b[] = $row['sum(qtypenjualan)'];
 }
@@ -37,7 +37,7 @@
 			data: {
 				labels: <?php echo json_encode($a); ?>,
 				datasets: [{
-					label: 'Grafik qty Penjualan',
+					label: 'Grafik SUM ',
 					data: <?php echo json_encode($b); ?>,
 					backgroundColor: ['rgba(255, 99, 132, 0.2)','rgba(54, 162, 235, 0.2)'],
 					borderColor: 'rgba(255,99,132,1)',
