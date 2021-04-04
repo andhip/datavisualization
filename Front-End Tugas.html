@@ -13,9 +13,31 @@
     }
 
     function displayResult() {
-        var dimensi = document.getElementById("dimensi").value;
-            if (document.getElementById("sum").checked) {
+    var dimensi=document.getElementById("dimensi").value;
+    if (document.getElementById('qty').checked) {
+    
+             $.ajax({
+	            type: 'GET',
+	            url: "dashboard.php",
+				data: {dimensi:dimensi},
+	            success: function(hasil) {
+	                $('#grafik').html(hasil);
+	           }
+			   });//ajax untuk menampilkan grafik
+			                 }//pilihan jika ingin melihat qty penjualan
+			   
+            else if (document.getElementById('amount').checked) {
+            $.ajax({
+	            type: 'GET',
+	            url: "dashboard_1.php",
+				data: {dimensi:dimensi},
+	            success: function(hasil) {
+	                $('#grafik').html(hasil);
+	           }
+			   });//ajax untuk menampilkan grafik			   
+               }//pilihan jika ingin melihat Amount penjualan
 
+            else if (document.getElementById('avr').checked) {
                 $.ajax({
                                 type: 'GET',
                                 url: "dashboard_tgs1.php",
@@ -24,8 +46,11 @@
                                     $('#grafik').html(hasil);
                                 }
                 });
+                request.fail(function() {
+                    alert ("Request failed:" +textStatus);
+                });
             }
-            else if (document.getElementById('avr').checked) {
+            else if (document.getElementById('sum').checked) {
                 $.ajax({
                                 type: 'GET',
                                 url: "dashboard_tgs2.php",
@@ -38,7 +63,6 @@
                     alert ("Request failed:" +textStatus);
                 });
             }
-        
     }
     
 </script>
