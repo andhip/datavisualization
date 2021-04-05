@@ -39,7 +39,7 @@ $query = mysqli_query($koneksi,"SELECT avg(jumlahpenjualan) FROM fakta WHERE ".$
 					'rgba(255,99,132,1)',
 					'rgba(54, 162, 235, 1)',					
 					],
-					label: 'Presentase Penjualan Barang'
+					label: 'Rata-rata Penjualan Barang'
 				}],
 				labels: <?php echo json_encode($a); ?>},
 			options: {

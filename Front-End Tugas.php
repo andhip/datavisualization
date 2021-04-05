@@ -80,6 +80,12 @@
         color:black;
         font-family: 'Public Sans', sans-serif;
         }
+        button {
+            margin-top: 4px;
+            margin-bottom: 5px;
+            cursor: pointer;
+        }
+   
 </style>
 </head>
 
@@ -105,7 +111,7 @@
 <input type="radio" id="sum" name="pilihan" />
 <label for="qty">Sum(Jumlah)</label>
 <input type="radio" id="avg" name="pilihan"  />
-<label for="amount">Rata-rata</label><br />
+<label for="amount">AVG(Rata-rata)</label><br />
 <!-- 
 <p>Besaran yang ingin anda gunakan?</p>
 <select id="dimensi" onchange="refreshpage();">
