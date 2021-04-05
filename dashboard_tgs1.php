@@ -4,36 +4,36 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bar Chart</title>
+    <title>PIE Chart</title>
     <script type="text/javascript" src="Chart.js"></script>
 </head>
 <body>
 <?php 
  
-    include("koneksi.php");
-    $dimensi = $_GET['dimensi'];
-    $produk = mysqli_query($koneksi,"SELECT * FROM fakta GROUP BY ".$dimensi."");
+	include("koneksi.php");
+	$dimensi=$_GET['dimensi'];
+	$produk = mysqli_query($koneksi,"SELECT * FROM fakta GROUP BY ".$dimensi."");
 
-    while($row = mysqli_fetch_array($produk)){
-    $a[] = $row[''.$dimensi.''];
-        
-    $query = mysqli_query($koneksi,"SELECT SUM(qtypenjualan) FROM fakta WHERE ".$dimensi."='".$row[''.$dimensi.'']."' group by ".$dimensi."");
-        $row = $query->fetch_array();
-        $b[] = $row['sum(qtypenjualan)'];
-}
+	while($row = mysqli_fetch_array($produk)){
+	$a[] = $row[''.$dimensi.''];
+		
+	$query = mysqli_query($koneksi,"SELECT SUM(qtypenjualan) FROM fakta WHERE ".$dimensi."='".$row[''.$dimensi.'']."' group by ".$dimensi."");
+		$row = $query->fetch_array();
+		$b[] = $row['SUM(qtypenjualan)'];
+	}
 
 
 ?>
 
 <div style="width: 800px;margin: 0px auto;">
-	<canvas id="barChart"></canvas>
+	<canvas id="pieChart"></canvas>
 </div>
 
 <script>
-		var ctx = document.getElementById("barChart").getContext('2d');
+		var ctx = document.getElementById("pieChart").getContext('2d');
 		var myChart = new Chart(ctx,config1);
 		var config1 = {
-			type: 'bar',
+			type: 'pie',
 			data: {
 				labels: <?php echo json_encode($a); ?>,
 				datasets: [{

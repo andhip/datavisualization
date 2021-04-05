@@ -57,14 +57,20 @@
 
 <p>Measuremnet Apa yang ingin anda ukur?</p>
 <select id="Measurement" onchange="refreshpage();">
-    <option value="id_produk" id="qty" for="qty">qty penjualan</option>
-    <option value="id_cabang" id="amount" for="amount">Amount penjualan</option> 
+    <option value="id_produk" >qty penjualan</option>
+    <option value="id_cabang">Amount penjualan</option> 
 </select><br />
 
 <p>Besaran yang ingin anda gunakan?</p>
+<input type="radio" id="qty" name="pilihan" />
+<label for="qty">Sum(Jumlah)</label>
+<input type="radio" id="amount" name="pilihan"  />
+<label for="avg">Rata-rata</label><br />
+<!-- 
+<p>Besaran yang ingin anda gunakan?</p>
 <select id="dimensi" onchange="refreshpage();">
     <option value="id_produk" id="sum">Sum(Jumlah)</option>
-    <option value="id_cabang" id="avr">Rata-rata</option>   
+    <option value="id_cabang" id="avr">Rata-rata</option>    -->
       
 </select><br />
 

@@ -14,20 +14,20 @@ $produk = mysqli_query($koneksi,"select * from fakta group by ".$dimensi."");
 while($row = mysqli_fetch_array($produk)){
 $a[] = $row[''.$dimensi.''];
 	
-$query = mysqli_query($koneksi,"select sum(jumlahpenjualan) from fakta where ".$dimensi."='".$row[''.$dimensi.'']."' group by ".$dimensi."");
+$query = mysqli_query($koneksi,"select avg(jumlahpenjualan) from fakta where ".$dimensi."='".$row[''.$dimensi.'']."' group by ".$dimensi."");
 	$row = $query->fetch_array();
-	$b[] = $row['sum(jumlahpenjualan)'];
+	$b[] = $row['avg(jumlahpenjualan)'];
 }
 ?>
 <div style="width: 800px;margin: 0px auto;">
-	<canvas id="pieChart"></canvas>
+	<canvas id="barChart"></canvas>
 </div>
 
 <script>
-		var ctx = document.getElementById('pieChart').getContext('2d');
+		var ctx = document.getElementById('barChart').getContext('2d');
 			window.myPie = new Chart(ctx, config);
 		var config = {
-			type: 'pie',
+			type: 'bar',
 			data: {
 				datasets: [{
 					data:<?php echo json_encode($b); ?>,
