@@ -8,16 +8,33 @@
 
 <body onload="location.reload();">
 <?php 
+
 include("koneksi.php");
-$dimensi=$_GET['dimensi'];
-$produk = mysqli_query($koneksi,"SELECT * FROM fakta GROUP BY ".$dimensi."");
-while($row = mysqli_fetch_array($produk)){
-$a[] = $row[''.$dimensi.''];
-	
-$query = mysqli_query($koneksi,"SELECT avg(jumlahpenjualan) FROM fakta WHERE ".$dimensi."='".$row[''.$dimensi.'']."' group by ".$dimensi."");
-	$row = $query->fetch_array();
-	$b[] = $row['avg(jumlahpenjualan)'];
-}
+
+		$dimensi=$_GET['dimensi'];
+		if ($dimensi == 'dimensi') {
+		$produk = mysqli_query($koneksi,"SELECT AVG(qtypenjualan) FROM fakta WHERE ".$dimensi."");
+
+		while($row = mysqli_fetch_array($produk)){
+		$a[] = $row[''.$dimensi.''];
+			
+		$query = mysqli_query($koneksi,"SELECT AVG(qtypenjualan) FROM fakta WHERE ".$dimensi."='".$row[''.$dimensi.'']."' group by ".$dimensi."");
+			$row = $query->fetch_array();
+			$b[] = $row['AVG(qtypenjualan)'];
+		
+		}
+		} 
+		else {
+			$produk = mysqli_query($koneksi,"SELECT * FROM fakta GROUP BY ".$dimensi."");
+
+		while($row = mysqli_fetch_array($produk)){
+		$a[] = $row[''.$dimensi.''];
+			
+		$query = mysqli_query($koneksi,"SELECT AVG(jumlahpenjualan) FROM fakta WHERE ".$dimensi."='".$row[''.$dimensi.'']."' group by ".$dimensi."");
+			$row = $query->fetch_array();
+			$b[] = $row['AVG(jumlahpenjualan)'];
+		} 
+		}
 ?>
 <div style="width: 800px;margin: 0px auto; margin-bottom: 15px;">
 	<canvas id="barChart"></canvas>

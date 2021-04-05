@@ -40,6 +40,8 @@
 
         }
 
+     
+
     // function refreshpage() {
     //     location.reload();
     // }
@@ -103,8 +105,8 @@
 
 <p>Measuremnet Apa yang ingin anda ukur?</p>
 <select id="Measurement" onchange="refreshpage();">
-    <option value="id_produk" >qty penjualan</option>
-    <option value="id_cabang">Amount penjualan</option> 
+    <option value="id_produk" id="qty" >qty penjualan</option>
+    <option value="id_cabang" id="amount">Amount penjualan</option> 
 </select><br />
 
 <p>Besaran yang ingin anda gunakan?</p>
