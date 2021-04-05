@@ -11,7 +11,9 @@
 <?php 
  
 	include("koneksi.php");
+	
 	$dimensi=$_GET['dimensi'];
+	if ($dimensi == 'dimensi') {
 	$produk = mysqli_query($koneksi,"SELECT * FROM fakta GROUP BY ".$dimensi."");
 
 	while($row = mysqli_fetch_array($produk)){
@@ -20,7 +22,30 @@
 	$query = mysqli_query($koneksi,"SELECT SUM(qtypenjualan) FROM fakta WHERE ".$dimensi."='".$row[''.$dimensi.'']."' group by ".$dimensi."");
 		$row = $query->fetch_array();
 		$b[] = $row['SUM(qtypenjualan)'];
+	
 	}
+	} else {
+		$produk = mysqli_query($koneksi,"SELECT * FROM fakta GROUP BY ".$dimensi."");
+
+	while($row = mysqli_fetch_array($produk)){
+	$a[] = $row[''.$dimensi.''];
+		
+	$query = mysqli_query($koneksi,"SELECT SUM(jumlahpenjualan) FROM fakta WHERE ".$dimensi."='".$row[''.$dimensi.'']."' group by ".$dimensi."");
+		$row = $query->fetch_array();
+		$b[] = $row['SUM(jumlahpenjualan)'];
+	} 
+}
+
+
+	// $produk = mysqli_query($koneksi,"SELECT * FROM fakta GROUP BY ".$dimensi."");
+
+	// while($row = mysqli_fetch_array($produk)){
+	// $a[] = $row[''.$dimensi.''];
+		
+	// $query = mysqli_query($koneksi,"SELECT SUM(qtypenjualan) FROM fakta WHERE ".$dimensi."='".$row[''.$dimensi.'']."' group by ".$dimensi."");
+	// 	$row = $query->fetch_array();
+	// 	$b[] = $row['SUM(qtypenjualan)'];
+	// }
 
 
 ?>
