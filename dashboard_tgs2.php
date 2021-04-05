@@ -10,16 +10,16 @@
 <?php 
 include("koneksi.php");
 $dimensi=$_GET['dimensi'];
-$produk = mysqli_query($koneksi,"select * from fakta group by ".$dimensi."");
+$produk = mysqli_query($koneksi,"SELECT * FROM fakta GROUP BY ".$dimensi."");
 while($row = mysqli_fetch_array($produk)){
 $a[] = $row[''.$dimensi.''];
 	
-$query = mysqli_query($koneksi,"select avg(jumlahpenjualan) from fakta where ".$dimensi."='".$row[''.$dimensi.'']."' group by ".$dimensi."");
+$query = mysqli_query($koneksi,"SELECT avg(jumlahpenjualan) FROM fakta WHERE ".$dimensi."='".$row[''.$dimensi.'']."' group by ".$dimensi."");
 	$row = $query->fetch_array();
 	$b[] = $row['avg(jumlahpenjualan)'];
 }
 ?>
-<div style="width: 800px;margin: 0px auto;">
+<div style="width: 800px;margin: 0px auto; margin-bottom: 15px;">
 	<canvas id="barChart"></canvas>
 </div>
 
@@ -32,8 +32,8 @@ $query = mysqli_query($koneksi,"select avg(jumlahpenjualan) from fakta where ".$
 				datasets: [{
 					data:<?php echo json_encode($b); ?>,
 					backgroundColor: [
-					'rgba(255, 99, 132, 0.2)',
-					'rgba(54, 162, 235, 0.2)',
+					'rgba(255, 99, 133, 0.671)',
+					'rgba(54, 163, 235, 0.660)',
 					],
 					borderColor: [
 					'rgba(255,99,132,1)',

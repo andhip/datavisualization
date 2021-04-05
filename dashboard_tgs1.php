@@ -25,7 +25,7 @@
 
 ?>
 
-<div style="width: 800px;margin: 0px auto;">
+<div style="width: 800px;margin: 0px auto; margin-bottom: 20px;">
 	<canvas id="pieChart"></canvas>
 </div>
 
@@ -39,7 +39,7 @@
 				datasets: [{
 					label: 'Grafik SUM ',
 					data: <?php echo json_encode($b); ?>,
-					backgroundColor: ['rgba(255, 99, 132, 0.2)','rgba(54, 162, 235, 0.2)'],
+					backgroundColor: ['rgba(255, 99, 133, 0.671)','rgba(54, 163, 235, 0.747)'],
 					borderColor: 'rgba(255,99,132,1)',
 					borderWidth: 1
 				}]
