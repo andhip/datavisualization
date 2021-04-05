@@ -6,7 +6,7 @@
 <script type="text/javascript" src="Chart.js"></script>
 </head>
 
-<body onload="location.reload();"">
+<body onload="location.reload();">
 <?php 
 include("koneksi.php");
 $dimensi=$_GET['dimensi'];
