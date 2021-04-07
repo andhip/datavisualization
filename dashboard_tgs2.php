@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<title>Pie Chart</title>
+<title>BAR Chart</title>
 <script type="text/javascript" src="Chart.js"></script>
 </head>
 
