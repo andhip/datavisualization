@@ -61,23 +61,32 @@
         clear: both;
         }
       body {
-        background-color: rgb(241, 241, 241);
+        background-color: rgba(241, 241, 241, 0.979);
         color: black;
         font-family: "Public Sans", sans-serif;
       }
       button {
-        margin-top: 4px;
-        margin-bottom: 5px;
+        margin-top: 7px;
+        margin-bottom: 12px;
         cursor: pointer;
       }
       p {
           font-size: 15px;
       }
       .dimention{
-          text-align: center;
-          margin-top: 2rem;
-          margin-right: 2rem;
+        text-align: center;
+        margin-top: 2rem;
+        margin-right: 2rem;
+        background-color: rgba(127, 193, 255, 0.068);
+        border-radius: 20px;
+        transition: all 0.3s ease-in-out;
+        box-shadow: 0px 7px 17px 4px rgba(0, 0, 0, 0.062);
+        padding: 5px 5px;
+
       }
+      .dimention:hover{
+        box-shadow: 0px 10px 20px 10px rgba(0, 0, 0, 0.103);
+            }
       #grafik{
           margin-right: 12px;
           margin-top: 2rem;
@@ -123,7 +132,9 @@
                 </div>
 
                 <div class="column">
-                    <div id="grafik"></div>
+                    <div class="graf">
+                        <div id="grafik"></div>
+                    </div>
                 </div>
     
   </body>
