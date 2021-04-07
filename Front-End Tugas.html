@@ -11,6 +11,7 @@
 
     <!-- script -->
     <script>
+
       function refreshpage() {
         location.reload();
       }
@@ -18,29 +19,35 @@
       function displayResult() {
         var dimensi = document.getElementById("dimensi").value;
         var measure = document.getElementById("measurement").value;
+
         if (document.getElementById("besaran").value == "sum") {
+
           $.ajax({
-            type: "GET",
-            url: "dashboard_tgs1.php",
-            data: { dimensi: dimensi, measure: measure },
-            success: function (hasil) {
-              $("#grafik").html(hasil);
-            },
+                    type: "GET",
+                    url: "dashboard_tgs1.php",
+                    data: { dimensi: dimensi, measure: measure },
+                    success: function (hasil) {
+                      $("#grafik").html(hasil);
+                    },
+
           }); //ajax untuk menampilkan grafik
         } //pilihan jika ingin melihat qty penjualan
+
         else if (document.getElementById("besaran").value == "avg") {
           $.ajax({
-            type: "GET",
-            url: "dashboard_tgs2.php",
-            data: { dimensi: dimensi, measure: measure },
-            success: function (hasil) {
-              $("#grafik").html(hasil);
-            },
+                    type: "GET",
+                    url: "dashboard_tgs2.php",
+                    data: { dimensi: dimensi, measure: measure },
+                    success: function (hasil) {
+                      $("#grafik").html(hasil);
+                    },
+
           }); //ajax untuk menampilkan grafik
         } //pilihan jika ingin melihat Amount penjualan
       }
 
     </script>
+    
     <style>
         * {
         box-sizing: border-box;
@@ -51,22 +58,26 @@
         width: 40%;
         padding: 10px;
         height: 300px; 
+
         }
 
         .row:after {
         content: "";
         display: table;
         clear: both;
+
         }
       body {
         background-color: rgba(241, 241, 241, 0.979);
         color: black;
         font-family: "Public Sans", sans-serif;
+
       }
       button {
         margin-top: 7px;
         margin-bottom: 12px;
         cursor: pointer;
+
       }
       p {
           font-size: 15px;
@@ -82,22 +93,22 @@
         padding: 5px 5px;
 
       }
+
       .dimention:hover {
         box-shadow: 0px 9px 18px 7px rgba(0, 0, 0, 0.090);
-            }
+
+        }
+
       #grafik {
           margin-right: 12px;
           margin-top: 2rem;
+
       }
   
     </style>
   </head>
 
   <body>
-    
-          
-            
-             
 
     <h1 align="center">Aplikasi Dashboard PT Datamining</h1>
 
